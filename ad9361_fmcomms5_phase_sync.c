@@ -396,7 +396,8 @@ int configure_transceiver(struct iio_device *dev, long long bw_hz, long long fs_
 }
 
 int configure_dds(double fs, double scale) {
-  long long freq = (long long)fs * 0.01;
+  // To generates 1 MHz DDS tone frequency
+  long long freq = (long long)fs * (1000000/fs);
   int i, j, ret = 0;
 
   for (i = 0; i < 2; i++) {
